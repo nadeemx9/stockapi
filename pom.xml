@@ -49,8 +49,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>github-action</finalName>
-        <defaultGoal>spring-boot:run</defaultGoal>
     </build>
     <repositories>
         <repository>
