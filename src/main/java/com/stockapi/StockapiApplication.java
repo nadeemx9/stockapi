@@ -22,5 +22,6 @@ public class StockapiApplication {
 					httpHeaders.add("X-RapidAPI-Host","apidojo-yahoo-finance-v1.p.rapidapi.com");
 				})
 				.build();
+
 	}
 }
