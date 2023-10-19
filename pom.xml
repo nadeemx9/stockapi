@@ -47,9 +47,9 @@
                         </exclude>
                     </excludes>
                 </configuration>
-
             </plugin>
         </plugins>
+        <finalName>stockapi-github-action</finalName>
     </build>
     <repositories>
         <repository>
