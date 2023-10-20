@@ -16,10 +16,10 @@ public class StockapiApplication {
 	@Bean
 	public RestClient restClient(){
 		return RestClient.builder()
-				.baseUrl("https://apidojo-yahoo-finance-v1.p.rapidapi.com")
+				.baseUrl("https://api-v2.upstox.com")
 				.defaultHeaders(httpHeaders -> {
-					httpHeaders.add("X-RapidAPI-Key", "0d571fbef7msh992d7843df4fbfcp14faadjsn13cac5bc4ed4");
-					httpHeaders.add("X-RapidAPI-Host","apidojo-yahoo-finance-v1.p.rapidapi.com");
+					httpHeaders.add("Api-Version", "2.0");
+					httpHeaders.add("accept","application/json");
 				})
 				.build();
 
