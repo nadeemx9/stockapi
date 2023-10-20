@@ -1,6 +1,16 @@
 package com.stockapi;
 
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 @Data
@@ -16,7 +26,7 @@ public class ChartData {
     @Data
     public static class Result {
         private Meta meta;
-        private long[] timestamp;
+        private Date[] timestamp;
         private Events events;
         private Indicators indicators;
     }
@@ -88,4 +98,5 @@ public class ChartData {
     public static class AdjClose {
         private double[] adjclose;
     }
+
 }
