@@ -8,26 +8,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("stock")
 public class MyController {
 
+    String str;
     private final MyService myService;
 
     public MyController(MyService myService) {
         this.myService = myService;
     }
 
-    @GetMapping("profile")
-    public ResponseEntity<QuoteSummaryResponse> getProfile(@RequestParam(name = "symbol") String symbol)
+    @GetMapping("candle")
+    public ResponseEntity<CandleData> candle(@RequestParam(name = "instrumentKey") String instrumentKey,
+                                             @RequestParam(name = "interval", required = false, defaultValue = "1minute") String interval)
     {
-        return new ResponseEntity<>(myService.getProfile(symbol), HttpStatus.OK);
+        return new ResponseEntity<>(myService.candle(instrumentKey, interval), HttpStatus.OK);
     }
-
-    @GetMapping("auto-complete")
-    public ResponseEntity<Object> autoComplete(@RequestParam("q") String q)
+    @GetMapping("historicalCandle")
+    public ResponseEntity<CandleData> historicalCandle(@RequestParam(name = "instrumentKey") String instrumentKey,
+                                                       @RequestParam(name = "interval", required = false, defaultValue = "1minute") String interval,
+                                                       @RequestParam(name = "toDate", required = false) String toDate,
+                                                       @RequestParam(name = "fromDate", required = false) String fromDate)
     {
-        return new ResponseEntity<>(myService.autoComplete(q), HttpStatus.OK);
-    }
-    @GetMapping("candle/{instrumentKey}")
-    public ResponseEntity<CandleData> candle(@PathVariable String instrumentKey)
-    {
-        return new ResponseEntity<>(myService.candle(instrumentKey), HttpStatus.OK);
+        return new ResponseEntity<>(myService.historicalCandle(instrumentKey, interval, toDate, fromDate), HttpStatus.OK);
     }
 }
